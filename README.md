@@ -1,4 +1,4 @@
-# ProcrastinAI - PlanFlow AI Challenge 🚀
+# ProcrastinAI - PlanFlow AI Challenge 
 
 Bu proje, İstanbul Sağlık ve Teknoloji Üniversitesi PlanFlow AI Challenge kapsamında geliştirilmiştir.
 

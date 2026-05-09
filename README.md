@@ -26,4 +26,4 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 Projeyi kendi bilgisayarınızda çalıştırmak için terminal (veya komut satırı) üzerinden projenin bulunduğu dizine gidin ve şu komutu çalıştırın:
 
 ```bash
-streamlit run app.py
+py -m streamlit run app.py

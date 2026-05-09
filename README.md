@@ -21,7 +21,7 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 2. Gerekli kütüphaneleri yüklemek için terminalde şu komutu çalıştırın:
    ```bash
    pip install streamlit google-genai python-dotenv
-## 🚀 Projeyi Çalıştırma
+## Projeyi Çalıştırma
 
 Projeyi kendi bilgisayarınızda çalıştırmak için terminal (veya komut satırı) üzerinden projenin bulunduğu dizine gidin ve şu komutu çalıştırın:
 

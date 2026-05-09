@@ -93,19 +93,6 @@ else:
             if task_name in st.session_state.ai_responses:
                 st.info(f"💡 **Yapay Zeka'nın Önerdiği Adımlar:**\n\n{st.session_state.ai_responses[task_name]}")
 
-            # Tamamla Butonu (Görevi Silme) - AI yanıtı varsa onu da temizle
-            if st.button("✅ Görevi Tamamla", key=f"tamamla_{idx}", type="primary"):
-                # Görevi listeden sil (task_manager'ın içinden)
-                task_manager.delete_task(task_name) 
-                
-                # Eğer bu görevin AI yanıtı varsa ekranı temizlemek için onu da sil
-                if task_name in st.session_state.ai_responses:
-                    del st.session_state.ai_responses[task_name]
-                    
-                st.rerun() # Ekranı yenile ki görev uçsun gitsin!
-            
-            st.divider() # Görevler arasına şık bir çizgi çeker
-
 # Alt kısım
 st.divider()
 st.markdown("### 💡 İpuçları\n- Bir görev 3 kez ertelendikten sonra yapay zeka desteğini kullanabilirsiniz.\n- Görevleri küçük adımlara bölmek ertelemeyi azaltmanın en etkili yoludur.")

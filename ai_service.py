@@ -13,8 +13,7 @@ def _initialize_client():
     
     # Yeni kütüphane yapısına uygun yapılandırma
     genai.configure(api_key=api_key)
-    return genai.GenerativeModel('models/gemini-pro')
-
+    return genai.GenerativeModel('gemini-1.5-flash')
 
 def get_task_breakdown(task_name):
     """Görevi mikro adımlara böler."""

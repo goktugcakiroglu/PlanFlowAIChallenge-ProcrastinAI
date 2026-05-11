@@ -21,16 +21,20 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 2. Gerekli kütüphaneleri yüklemek için terminalde şu komutu çalıştırın:
    ```bash
    pip install streamlit google-generativeai python-dotenv
+   ```
 3. Projenin ana dizininde bir .env dosyası oluşturun ve Gemini API anahtarınızı içine ekleyin:
    ```env
    GEMINI_API_KEY=sizin_api_anahtariniz_buraya
+   ```
 ## Streamlit Cloud Üzerinde Çalıştırma (Deploy) İçin:
 
 Proje Streamlit Cloud'a yüklendiğinde, API anahtarı güvenli bir şekilde Streamlit Secrets üzerinden yönetilmektedir. Jürinin kendi Cloud ortamında test edebilmesi için, uygulamanın yönetim panelinden (Advanced Settings -> Secrets) anahtar aşağıdaki formatta eklenmelidir:
    ```toml
    GEMINI_API_KEY="sizin_api_anahtariniz_buraya"
+   ```
 ## Projeyi Çalıştırma
 Projeyi kendi bilgisayarınızda çalıştırmak için terminal (veya komut satırı) üzerinden projenin bulunduğu dizine gidin ve şu komutu çalıştırın:
 
-```bash
-py -m streamlit run app.py
+   ```bash
+   py -m streamlit run app.py
+   ```

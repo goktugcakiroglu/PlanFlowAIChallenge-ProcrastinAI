@@ -11,7 +11,8 @@ def _initialize_client():
     
     # Doğru ve güncel yapı budur:
     genai.configure(api_key=api_key)
-    return genai.GenerativeModel('gemini-1.5-flash')
+    return genai.GenerativeModel(model_name="gemini-1.5-flash")
+
 
 def get_task_breakdown(task_name):
     try:

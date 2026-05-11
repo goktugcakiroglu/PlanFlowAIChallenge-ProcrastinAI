@@ -20,7 +20,8 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 1. Repoyu bilgisayarınıza indirin veya klonlayın.
 2. Gerekli kütüphaneleri yüklemek için terminalde şu komutu çalıştırın:
    ```bash
-   pip install streamlit google-genai python-dotenv
+   pip install streamlit google-generativeai python-dotenv
+
 ## Projeyi Çalıştırma
 
 Projeyi kendi bilgisayarınızda çalıştırmak için terminal (veya komut satırı) üzerinden projenin bulunduğu dizine gidin ve şu komutu çalıştırın:

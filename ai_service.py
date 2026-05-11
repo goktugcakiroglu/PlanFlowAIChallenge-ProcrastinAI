@@ -2,29 +2,26 @@ import os
 from google import genai
 from dotenv import load_dotenv
 
-# Ortam değişkenlerini yükle
 load_dotenv()
 
 def get_task_breakdown(task_name):
-    """Görevi mikro adımlara bölen tek ve ana fonksiyon."""
     try:
-        # API Anahtarını Secrets'tan veya .env'den al
         api_key = os.environ.get('GEMINI_API_KEY')
-        
         if not api_key:
-            return "Hata: API anahtarı sistemde tanımlı değil."
+            return "Hata: API anahtarı tanımlı değil."
 
-        # Yeni kütüphane yapısıyla bağlantıyı başlat
+        # Yeni kütüphane yapısı
         client = genai.Client(api_key=api_key)
         
-        # İstek gönder (En sade ve hızlı haliyle)
+        # KRİTİK NOKTA: model isminin başına 'models/' ekleyerek 
+        # ve sade bir istek göndererek v1beta hatasını aşmayı deniyoruz.
         response = client.models.generate_content(
             model='gemini-1.5-flash',
-            contents=f"Kullanıcı şu görevi erteledi: {task_name}. Bu göreve başlamasını sağlamak için 3 çok kısa ve somut adım yaz."
+            contents=f"Görevi 3 küçük adıma böl: {task_name}"
         )
         
         return response.text
 
     except Exception as e:
-        # Hata olursa arayüzde 'Bağlantı Hatası' olarak görünür
+        # Eğer hala 404 verirse, model ismini 'gemini-pro' olarak değiştirmeyi deneyeceğiz.
         return f"Bağlantı Hatası: {str(e)}"

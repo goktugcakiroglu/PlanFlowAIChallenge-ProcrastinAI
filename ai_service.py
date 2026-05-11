@@ -12,7 +12,8 @@ def get_task_breakdown(task_name):
             return "Hata: API anahtarı sistemde tanımlı değil."
 
         # Google'ın ana API adresi (v1 sürümü üzerinden, beta değil!)
-        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
+        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={api_key}"
+
         
         headers = {'Content-Type': 'application/json'}
         

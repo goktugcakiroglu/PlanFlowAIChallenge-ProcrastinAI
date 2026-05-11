@@ -1,27 +1,37 @@
 import os
-from google import genai
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def get_task_breakdown(task_name):
+    """Kütüphane hatalarını aşmak için direkt REST API üzerinden bağlantı kurar."""
     try:
         api_key = os.environ.get('GEMINI_API_KEY')
         if not api_key:
-            return "Hata: API anahtarı tanımlı değil."
+            return "Hata: API anahtarı sistemde tanımlı değil."
 
-        # Yeni kütüphane yapısı
-        client = genai.Client(api_key=api_key)
+        # Google'ın ana API adresi (v1 sürümü üzerinden, beta değil!)
+        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
         
-        # KRİTİK NOKTA: model isminin başına 'models/' ekleyerek 
-        # ve sade bir istek göndererek v1beta hatasını aşmayı deniyoruz.
-        response = client.models.generate_content(
-            model='gemini-1.5-flash',
-            contents=f"Görevi 3 küçük adıma böl: {task_name}"
-        )
+        headers = {'Content-Type': 'application/json'}
         
-        return response.text
+        data = {
+            "contents": [{
+                "parts": [{"text": f"Kullanıcı şu görevi erteledi: {task_name}. Bunu başlatmak için 3 kısa adım yaz."}]
+            }]
+        }
+
+        # İsteği gönder
+        response = requests.post(url, headers=headers, json=data)
+        result = response.json()
+
+        # Yanıtı çözümle
+        if response.status_code == 200:
+            return result['candidates'][0]['content']['parts'][0]['text']
+        else:
+            error_msg = result.get('error', {}).get('message', 'Bilinmeyen hata')
+            return f"API Hatası ({response.status_code}): {error_msg}"
 
     except Exception as e:
-        # Eğer hala 404 verirse, model ismini 'gemini-pro' olarak değiştirmeyi deneyeceğiz.
         return f"Bağlantı Hatası: {str(e)}"

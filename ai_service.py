@@ -11,7 +11,7 @@ def get_task_breakdown(task_name):
             return "Hata: API anahtarı tanımlı değil."
 
         # v1beta genelde yeni anahtarlarla daha iyi çalışır
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
         
         headers = {'Content-Type': 'application/json'}
         data = {

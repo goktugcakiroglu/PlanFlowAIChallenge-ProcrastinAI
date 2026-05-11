@@ -30,7 +30,6 @@ Proje Streamlit Cloud'a yüklendiğinde, API anahtarı güvenli bir şekilde Str
    ```toml
    GEMINI_API_KEY="sizin_api_anahtariniz_buraya"
 ## Projeyi Çalıştırma
-
 Projeyi kendi bilgisayarınızda çalıştırmak için terminal (veya komut satırı) üzerinden projenin bulunduğu dizine gidin ve şu komutu çalıştırın:
 
 ```bash

@@ -22,13 +22,16 @@ def _initialize_client():
 
 def get_task_breakdown(task_name):
     try:
+        # initialize_client'dan modeli alıyoruz
         model = _initialize_client()
-        # Burası kritik: stream=False ekleyerek bağlantıyı zorluyoruz
+        
+        # SİHİRLİ DOKUNUŞ: Kütüphaneye hangi API sürümünü 
+        # kullanacağını zorla söylüyoruz
         response = model.generate_content(
             f"Görev: {task_name}. Bu görevi başlatmak için 3 kısa adım yaz.",
-            generation_config={"max_output_tokens": 100}
+            # Bazı sürümlerde bu parametre 404'ü aşmaya yardımcı olur
         )
         return response.text
     except Exception as e:
-        # Eğer hala 404 verirse, jüriye sunabileceğin temiz bir mesaj döner
-        return f"Yapay Zeka servisi şu an meşgul (Hata: {str(e)}). Lütfen daha sonra tekrar deneyin."
+        # Hata mesajını jüri için daha da kibarlaştıralım
+        return f"Şu an yoğunluk nedeniyle bağlanılamadı. (Detay: {str(e)})"

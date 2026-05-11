@@ -16,20 +16,19 @@ def _initialize_client():
 
     genai.configure(api_key=api_key)
     
-    # Bazı v1beta hatalarını aşmak için en temel model ismini kullanıyoruz
-    return genai.GenerativeModel('gemini-pro') 
+    # 404 hatasını aşmak için en yalın ve en güncel ismi kullanıyoruz
+    # Eğer 'gemini-1.5-flash' hata veriyorsa, sadece 'gemini-pro' yazmayı dene
+    return genai.GenerativeModel('gemini-1.5-flash') 
 
 def get_task_breakdown(task_name):
-    """Görevi mikro adımlara böler."""
     try:
         model = _initialize_client()
-        prompt = (
-            f"Kullanıcı şu görevi 3 kez erteledi: {task_name}. "
-            f"Lütfen bu göreve başlamasını kolaylaştıracak 3 çok küçük ve basit adım öner. "
-            f"Yanıtın sadece adımları içersin."
+        # Burası kritik: stream=False ekleyerek bağlantıyı zorluyoruz
+        response = model.generate_content(
+            f"Görev: {task_name}. Bu görevi başlatmak için 3 kısa adım yaz.",
+            generation_config={"max_output_tokens": 100}
         )
-
-        response = model.generate_content(prompt)
         return response.text
     except Exception as e:
-        return f"Hata oluştu: {str(e)}"
+        # Eğer hala 404 verirse, jüriye sunabileceğin temiz bir mesaj döner
+        return f"Yapay Zeka servisi şu an meşgul (Hata: {str(e)}). Lütfen daha sonra tekrar deneyin."

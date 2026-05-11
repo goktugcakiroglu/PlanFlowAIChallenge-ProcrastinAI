@@ -1,6 +1,8 @@
 import os
 from dotenv import load_dotenv
-from google import genai
+# ESKİ HALİ: from google import genai
+# YENİ HALİ (Bunu kopyala yapıştır):
+from google import genai 
 
 # Ortam değişkenlerini sadece bu modül yüklüyor
 load_dotenv()

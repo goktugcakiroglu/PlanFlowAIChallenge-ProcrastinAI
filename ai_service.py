@@ -10,15 +10,14 @@ if os.environ.get('GEMINI_API_KEY'):
     os.environ["GOOGLE_API_KEY"] = os.environ.get('GEMINI_API_KEY')
 
 def _initialize_client():
-    """Gemini modelini yapılandırır ve döndürür."""
     api_key = os.environ.get('GEMINI_API_KEY')
     if not api_key:
-        raise ValueError("GEMINI_API_KEY ortam değişkeni bulunamadı!")
+        raise ValueError("GEMINI_API_KEY bulunamadı!")
 
     genai.configure(api_key=api_key)
     
-    # En stabil model ismini seçiyoruz
-    return genai.GenerativeModel('gemini-1.5-flash')
+    # Bazı v1beta hatalarını aşmak için en temel model ismini kullanıyoruz
+    return genai.GenerativeModel('gemini-pro') 
 
 def get_task_breakdown(task_name):
     """Görevi mikro adımlara böler."""

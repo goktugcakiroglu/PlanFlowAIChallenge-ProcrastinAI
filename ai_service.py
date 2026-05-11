@@ -1,8 +1,7 @@
 import os
-from dotenv import load_dotenv
 import google.generativeai as genai
+from dotenv import load_dotenv
 
-# Ortam değişkenlerini sadece bu modül yüklüyor
 load_dotenv()
 
 def _initialize_client():
@@ -10,7 +9,7 @@ def _initialize_client():
     if not api_key:
         raise ValueError("GEMINI_API_KEY bulunamadı!")
     
-    # Yeni yapı: Client yerine configure kullanıyoruz
+    # Doğru ve güncel yapı budur:
     genai.configure(api_key=api_key)
     return genai.GenerativeModel('gemini-1.5-flash')
 

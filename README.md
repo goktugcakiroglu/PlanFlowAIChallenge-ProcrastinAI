@@ -1,7 +1,5 @@
 # ProcrastinAI - PlanFlow AI Challenge 
 
-Bu proje, İstanbul Sağlık ve Teknoloji Üniversitesi PlanFlow AI Challenge kapsamında geliştirilmiştir.
-
 ## Seçilen Problem
 **Problem 3: Sürekli Ertelenen Görevler**
 Kullanıcıların gözünde büyüyen, karmaşıklaşan veya başlangıç noktası belirsiz olan görevleri tekrar tekrar ertelemesi. Bu döngü, zaman kaybına ve motivasyon düşüşüne neden olmaktadır.
